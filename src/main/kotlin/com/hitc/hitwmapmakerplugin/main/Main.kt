@@ -27,10 +27,12 @@ class Main: JavaPlugin(), Listener {
         getCommand("scan").executor = Scan()
 
     }
+
+    companion object {
+        private val worldEdit = Bukkit.getServer().pluginManager.getPlugin("WorldEdit");
+        val worldEditPlugin = worldEdit as? WorldEditPlugin ?: throw Exception("worldedit not installed")
+    }
 }
 
-object MainObject {
-    private val worldEdit = Bukkit.getServer().pluginManager.getPlugin("WorldEdit");
-    val worldEditPlugin = worldEdit as? WorldEditPlugin ?: throw Exception("worldedit not installed")
-}
+
 

@@ -1,10 +1,9 @@
 package com.hitc.hitwmapmakerplugin.main.commands
 
-import com.hitc.hitwmapmakerplugin.main.MainObject
+import com.hitc.hitwmapmakerplugin.main.Main
 import com.hitc.hitwmapmakerplugin.main.core.Map
 import com.hitc.hitwmapmakerplugin.main.core.WallBlockType
 import com.hitc.hitwmapmakerplugin.main.utils.MapFileUtils
-import com.hitc.hitwmapmakerplugin.main.utils.MiscUtils
 import com.hitc.hitwmapmakerplugin.main.utils.blockPosition
 import com.hitc.hitwmapmakerplugin.main.utils.facingDirection
 import com.sk89q.worldedit.BlockVector
@@ -12,13 +11,11 @@ import org.bukkit.DyeColor
 import org.bukkit.Location
 import org.bukkit.Material
 import org.bukkit.TreeSpecies
-import org.bukkit.block.BlockFace
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 import org.bukkit.material.*
-import kotlin.experimental.and
 
 class Scan : CommandExecutor {
 
@@ -34,7 +31,7 @@ class Scan : CommandExecutor {
         val p = sender as? Player ?: return true
         val name = if (args?.isNotEmpty() == true) args[0] else
             run{p.sendMessage("§cInvalid name given."); return true}
-        val selection = MainObject.worldEditPlugin.getSelection(p) ?:
+        val selection = Main.worldEditPlugin.getSelection(p) ?:
             run{p.sendMessage("§cNothing selected."); return true}
         val region = selection.regionSelector.region
 
